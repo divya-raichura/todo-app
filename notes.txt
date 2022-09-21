@@ -1,0 +1,9 @@
+in mongo db...
+
+does not care how data relates to each other
+
+tables => collections which represent grp of items
+rows => documents which represent single items
+
+document => set of key value pairs
+
