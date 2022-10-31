@@ -5,6 +5,9 @@ const taskRoutes = require("./routes/tasks");
 const connectDb = require("./db/connect");
 require("dotenv").config();
 
+const notFound = require('./controller/not-found');
+const errorHandlerMiddleware = require('./controller/error-handler');
+
 // ----------------middleware----------------
 app.use(express.static("./public"));
 // to get the data in req.body
@@ -16,6 +19,8 @@ app.use(express.json());
 // routes related to tasks
 app.use("/api/v1/tasks", taskRoutes);
 
+app.use(notFound);
+app.use(errorHandlerMiddleware);
 async function start() {
   // cause we don't want to spin up the server before connecting to db
   // so it there is some error and we can't connect to db, then we don't start the error
